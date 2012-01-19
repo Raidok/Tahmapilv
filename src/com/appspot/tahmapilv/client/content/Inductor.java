@@ -34,13 +34,15 @@ public class Inductor extends Composite implements HasText,Content {
 	@UiHandler("button")
 	void onClick(ClickEvent e) {
 		Services.getAssistantService().getInductorResistance(
-				Double.valueOf(inductance.getText()),
-				Double.valueOf(frequency.getText()),
-				new RPCCallback<Double>() {
+				inductance.getText(),
+				0,
+				frequency.getText(),
+				1,
+				new RPCCallback<String>() {
 
 					@Override
-					public void onSuccess(Double result) {
-						Inductor.this.result.setText("Tulemus: " + result);
+					public void onSuccess(String result) {
+						Inductor.this.result.setText("Result: " + result + " \u2126");
 					}
 				});
 	}

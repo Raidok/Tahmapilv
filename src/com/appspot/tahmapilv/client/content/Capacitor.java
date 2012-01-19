@@ -2,6 +2,8 @@ package com.appspot.tahmapilv.client.content;
 
 import com.appspot.tahmapilv.service.Services;
 import com.appspot.tahmapilv.util.RPCCallback;
+import com.appspot.tahmapilv.util.UnitsListBox;
+import com.appspot.tahmapilv.util.UnitsListBox.Type;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -22,27 +24,41 @@ public class Capacitor extends Composite implements HasText,Content {
 	interface CapacitorUiBinder extends UiBinder<Widget, Capacitor> {
 	}
 
+	@UiField TextBox capacitance;
+	@UiField(provided=true) UnitsListBox capacitanceUnit;
+	@UiField TextBox frequency;
+	@UiField(provided=true) UnitsListBox frequencyUnit;
+	@UiField Button button;
+	@UiField Button buttonTest;
+	@UiField Label result;
+
 	public Capacitor() {
+		this.capacitanceUnit = new UnitsListBox(Type.CAPACITANCE);
+		this.frequencyUnit = new UnitsListBox(Type.FREQUENCY);
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	@UiField TextBox capacitance;
-	@UiField TextBox frequency;
-	@UiField Button button;
-	@UiField Label result;
 
 	@UiHandler("button")
-	void onClick(ClickEvent e) {
+	void onSubmitClick(ClickEvent e) {
 		Services.getAssistantService().getCapacitorResistance(
-				Double.valueOf(capacitance.getText()),
-				Double.valueOf(frequency.getText()),
-				new RPCCallback<Double>() {
+				capacitance.getText(),
+				capacitanceUnit.getValue(),
+				frequency.getText(),
+				frequencyUnit.getValue(),
+				new RPCCallback<String>() {
 
 					@Override
-					public void onSuccess(Double result) {
-						Capacitor.this.result.setText("Tulemus: " + result);
+					public void onSuccess(String result) {
+						Capacitor.this.result.setText("Result: " + result + " \u2126");
 					}
 				});
+	}
+
+	@UiHandler("buttonTest")
+	void onTestClick(ClickEvent e) {
+		Capacitor.this.result.setText("factor:" + capacitanceUnit.getValue() +
+				" freq:"+frequencyUnit.getValue());
 	}
 
 	@Override

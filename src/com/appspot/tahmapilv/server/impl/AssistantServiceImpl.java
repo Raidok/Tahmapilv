@@ -2,7 +2,9 @@ package com.appspot.tahmapilv.server.impl;
 
 import util.Units.FrequencyUnit;
 
+import com.appspot.tahmapilv.server.Utils;
 import com.appspot.tahmapilv.service.AssistantService;
+import com.appspot.tahmapilv.shared.InputException;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import components.Capacitor;
 import components.Inductor;
@@ -14,17 +16,19 @@ import components.Inductor;
 @SuppressWarnings("serial")
 public class AssistantServiceImpl extends RemoteServiceServlet implements AssistantService {
 
-	/* (non-Javadoc)
-	 * @see com.appspot.tahmapilv.service.AssistantService#getCapacitorResistance(double, double)
-	 */
 	@Override
-	public double getCapacitorResistance(double capacitance, double frequency) {
-		return new Capacitor(capacitance, frequency).getResistance();
+	public String getCapacitorResistance(String capacitance, int factor,
+			String frequency, int multiplier) throws InputException {
+		double cap = Utils.stringToDouble(capacitance) * Math.pow(10, factor);
+		double freq = Utils.stringToDouble(frequency) / (multiplier * Math.PI);
+		return String.valueOf(new Capacitor(cap, freq).getResistance());
 	}
 
 	@Override
-	public double getInductorResistance(double inductance, double frequency) {
-		return new Inductor(inductance, frequency, FrequencyUnit.HERTZ).getResistance();
+	public String getInductorResistance(String inductance, int factor,
+			String frequency, int multiplier) throws InputException {
+		double ind = Utils.stringToDouble(inductance) * Math.pow(10, factor);
+		double freq = Utils.stringToDouble(frequency) / (multiplier * Math.PI);
+		return String.valueOf(new Inductor(ind, freq, FrequencyUnit.HERTZ).getResistance());
 	}
-
 }

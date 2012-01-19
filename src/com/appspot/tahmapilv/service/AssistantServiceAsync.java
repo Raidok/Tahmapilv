@@ -7,6 +7,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public interface AssistantServiceAsync {
 
-	void getCapacitorResistance(double capacitance, double frequency, AsyncCallback<Double> callBack);
-	void getInductorResistance(double inductance, double frequency, AsyncCallback<Double> callBack);
+	void getCapacitorResistance(String capacitance, int factor, String frequency, int multiplier,
+			AsyncCallback<String> callBack);
+	void getInductorResistance(String inductance, int factor, String frequency, int multiplier,
+			AsyncCallback<String> callBack);
 }

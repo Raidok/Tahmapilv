@@ -1,5 +1,6 @@
 package com.appspot.tahmapilv.service;
 
+import com.appspot.tahmapilv.shared.InputException;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
@@ -9,6 +10,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 @RemoteServiceRelativePath("assist")
 public interface AssistantService extends RemoteService {
 
-	double getCapacitorResistance(double capacitance, double frequency);
-	double getInductorResistance(double inductance, double frequency);
+	/* Capacitor AC response */
+	String getCapacitorResistance(String capacitance, int factor, String frequency, int multiplier) throws InputException;
+	String getInductorResistance(String inductance, int factor, String frequency, int multiplier) throws InputException;
 }

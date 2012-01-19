@@ -1,15 +1,21 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:com.appspot.tahmapilv.util">
 	<ui:style>
 		.inline {
 			
 		}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:TextBox ui:field="capacitance"></g:TextBox><g:InlineLabel>nF</g:InlineLabel>
-		<g:TextBox ui:field="frequency"></g:TextBox><g:InlineLabel>Hz</g:InlineLabel>
+		<g:TextBox ui:field="capacitance"></g:TextBox>
+		<my:UnitsListBox ui:field="capacitanceUnit"></my:UnitsListBox>
+		<br/>
+		<g:TextBox ui:field="frequency"></g:TextBox>
+		<my:UnitsListBox ui:field="frequencyUnit"></my:UnitsListBox>
+		<br/>
 		<g:Button ui:field="button" text="Submit"/>
+		<g:Button ui:field="buttonTest" text="Test"/>
 		<g:Label ui:field="result"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 
