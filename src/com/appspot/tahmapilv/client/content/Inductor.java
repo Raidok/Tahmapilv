@@ -1,6 +1,6 @@
 package com.appspot.tahmapilv.client.content;
 
-import com.appspot.tahmapilv.service.Services;
+import com.appspot.tahmapilv.client.Services;
 import com.appspot.tahmapilv.util.RPCCallback;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;

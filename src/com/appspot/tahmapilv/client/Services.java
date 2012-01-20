@@ -1,5 +1,9 @@
-package com.appspot.tahmapilv.service;
+package com.appspot.tahmapilv.client;
 
+import com.appspot.tahmapilv.service.AssistantService;
+import com.appspot.tahmapilv.service.AssistantServiceAsync;
+import com.appspot.tahmapilv.service.ManageService;
+import com.appspot.tahmapilv.service.ManageServiceAsync;
 import com.google.gwt.core.client.GWT;
 
 /**
