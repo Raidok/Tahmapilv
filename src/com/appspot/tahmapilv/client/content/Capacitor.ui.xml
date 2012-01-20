@@ -15,7 +15,6 @@
 		<my:UnitsListBox ui:field="frequencyUnit"></my:UnitsListBox>
 		<br/>
 		<g:Button ui:field="button" text="Submit"/>
-		<g:Button ui:field="buttonTest" text="Test"/>
 		<g:Label ui:field="result"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 

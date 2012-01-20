@@ -29,7 +29,6 @@ public class Capacitor extends Composite implements HasText,Content {
 	@UiField TextBox frequency;
 	@UiField(provided=true) UnitsListBox frequencyUnit;
 	@UiField Button button;
-	@UiField Button buttonTest;
 	@UiField Label result;
 
 	public Capacitor() {
@@ -37,7 +36,6 @@ public class Capacitor extends Composite implements HasText,Content {
 		this.frequencyUnit = new UnitsListBox(Type.FREQUENCY);
 		initWidget(uiBinder.createAndBindUi(this));
 	}
-
 
 	@UiHandler("button")
 	void onSubmitClick(ClickEvent e) {
@@ -53,12 +51,6 @@ public class Capacitor extends Composite implements HasText,Content {
 						Capacitor.this.result.setText("Result: " + result + " \u2126");
 					}
 				});
-	}
-
-	@UiHandler("buttonTest")
-	void onTestClick(ClickEvent e) {
-		Capacitor.this.result.setText("factor:" + capacitanceUnit.getValue() +
-				" freq:"+frequencyUnit.getValue());
 	}
 
 	@Override
