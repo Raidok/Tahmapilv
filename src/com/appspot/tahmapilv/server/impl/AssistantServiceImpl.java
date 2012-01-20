@@ -10,7 +10,6 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
  * @author raido
- *
  */
 @SuppressWarnings("serial")
 public class AssistantServiceImpl extends RemoteServiceServlet implements AssistantService {
@@ -28,7 +27,8 @@ public class AssistantServiceImpl extends RemoteServiceServlet implements Assist
 	public String getInductorResistance(String inductance, int factor,
 			String frequency, int multiplier) throws InputException {
 		double ind = Utils.stringToDouble(inductance) * Math.pow(10, factor);
-		double freq = Utils.stringToDouble(frequency) / (multiplier * Math.PI);
+		double freq = Utils.stringToDouble(frequency);
+		if (multiplier > 0) freq /= (multiplier * Math.PI);
 		return String.valueOf(new Inductor(ind, freq).getResistance());
 	}
 }

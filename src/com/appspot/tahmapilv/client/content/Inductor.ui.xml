@@ -1,14 +1,19 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:com.appspot.tahmapilv.util">
 	<ui:style>
 		.inline {
 			
 		}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:TextBox ui:field="inductance"></g:TextBox><g:InlineLabel>mH</g:InlineLabel>
-		<g:TextBox ui:field="frequency"></g:TextBox><g:InlineLabel>Hz</g:InlineLabel>
+		<g:TextBox ui:field="inductance"></g:TextBox>
+		<my:UnitsListBox ui:field="inductanceUnit"></my:UnitsListBox>
+		<br/>
+		<g:TextBox ui:field="frequency"></g:TextBox>
+		<my:UnitsListBox ui:field="frequencyUnit"></my:UnitsListBox>
+		<br/>
 		<g:Button ui:field="button" text="Submit"/>
 		<g:Label ui:field="result"/>
 	</g:HTMLPanel>

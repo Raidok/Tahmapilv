@@ -11,12 +11,11 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class Capacitor extends Composite implements HasText,Content {
+public class Capacitor extends Composite implements Content {
 
 	private static CapacitorUiBinder uiBinder = GWT
 			.create(CapacitorUiBinder.class);
@@ -52,15 +51,4 @@ public class Capacitor extends Composite implements HasText,Content {
 					}
 				});
 	}
-
-	@Override
-	public void setText(String text) {
-		button.setText(text);
-	}
-
-	@Override
-	public String getText() {
-		return button.getText();
-	}
-
 }
