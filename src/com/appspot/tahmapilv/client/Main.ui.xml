@@ -36,8 +36,9 @@
 	<g:HTMLPanel styleName="{style.fullheight}">
 		<div id="menu">
 			<a href="#">Front Page</a><br/>
-			<a href="#Capacitor">Capacitor</a><br/>
-			<a href="#Inductor">Inductor</a>
+			<a href="#Capacitor">Capacitor AC response</a><br/>
+			<a href="#Inductor">Inductor AC response</a><br/>
+			<a href="#Gain">Gain calculator</a>
 		</div>
 		<g:FlowPanel ui:field="content"></g:FlowPanel>
 	</g:HTMLPanel>

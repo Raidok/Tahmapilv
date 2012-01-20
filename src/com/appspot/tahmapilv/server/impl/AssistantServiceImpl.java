@@ -2,6 +2,7 @@ package com.appspot.tahmapilv.server.impl;
 
 import isc.components.Capacitor;
 import isc.components.Inductor;
+import isc.util.Admittance;
 
 import com.appspot.tahmapilv.server.Utils;
 import com.appspot.tahmapilv.service.AssistantService;
@@ -20,7 +21,7 @@ public class AssistantServiceImpl extends RemoteServiceServlet implements Assist
 		double cap = Utils.stringToDouble(capacitance) * Math.pow(10, factor);
 		double freq = Utils.stringToDouble(frequency);
 		if (multiplier > 0) freq /= (multiplier * Math.PI);
-		return String.valueOf(new Capacitor(cap, freq).getResistance());
+		return Utils.roundToThree(new Capacitor(cap, freq).getResistance());
 	}
 
 	@Override
@@ -29,6 +30,29 @@ public class AssistantServiceImpl extends RemoteServiceServlet implements Assist
 		double ind = Utils.stringToDouble(inductance) * Math.pow(10, factor);
 		double freq = Utils.stringToDouble(frequency);
 		if (multiplier > 0) freq /= (multiplier * Math.PI);
-		return String.valueOf(new Inductor(ind, freq).getResistance());
+		return Utils.roundToThree(new Inductor(ind, freq).getResistance());
+	}
+
+	@Override
+	public String getGain(String type, String input, String output)
+			throws InputException {
+		double in = Utils.stringToDouble(input);
+		double out = Utils.stringToDouble(output);
+		double ratio = out/in;
+		StringBuffer buf = new StringBuffer("ratio="+Utils.roundToThree(ratio));
+		if ("CUR".equals(type)) {
+			buf.append(" current gain=");
+			buf.append(Utils.roundToThree(Admittance.getCurrentGain(ratio)));
+			buf.append(" dB");
+		} else if ("POW".equals(type)) {
+			buf.append(" power gain=");
+			buf.append(Utils.roundToThree(Admittance.getPowerGain(ratio)));
+			buf.append(" dB");
+		} else if ("VOL".equals(type)) {
+			buf.append(" voltage gain=");
+			buf.append(Utils.roundToThree(Admittance.getVoltageGain(ratio)));
+			buf.append(" dB");
+		}
+		return buf.toString();
 	}
 }

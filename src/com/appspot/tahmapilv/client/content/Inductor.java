@@ -40,9 +40,9 @@ public class Inductor extends Composite implements Content {
 	void onClick(ClickEvent e) {
 		Services.getAssistantService().getInductorResistance(
 				inductance.getText(),
-				inductanceUnit.getValue(),
+				inductanceUnit.getIntValue(),
 				frequency.getText(),
-				frequencyUnit.getValue(),
+				frequencyUnit.getIntValue(),
 				new RPCCallback<String>() {
 
 					@Override

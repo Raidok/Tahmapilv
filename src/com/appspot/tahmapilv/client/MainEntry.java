@@ -1,6 +1,7 @@
 package com.appspot.tahmapilv.client;
 
 import com.appspot.tahmapilv.client.content.Capacitor;
+import com.appspot.tahmapilv.client.content.Gain;
 import com.appspot.tahmapilv.client.content.Inductor;
 import com.appspot.tahmapilv.client.content.NotFound;
 import com.appspot.tahmapilv.client.content.Welcome;
@@ -34,6 +35,8 @@ public class MainEntry implements EntryPoint {
 				main.setContent(new Capacitor());
 			} else if ("Inductor".equals(token)) {
 				main.setContent(new Inductor());
+			} else if ("Gain".equals(token)) {
+				main.setContent(new Gain());
 			} else {
 				main.setContent(new NotFound());
 			}

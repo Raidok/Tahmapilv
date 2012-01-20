@@ -15,40 +15,36 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class Capacitor extends Composite implements Content {
+public class Gain extends Composite {
 
-	private static CapacitorUiBinder uiBinder = GWT
-			.create(CapacitorUiBinder.class);
+	private static GainUiBinder uiBinder = GWT.create(GainUiBinder.class);
 
-	interface CapacitorUiBinder extends UiBinder<Widget, Capacitor> {
+	interface GainUiBinder extends UiBinder<Widget, Gain> {
 	}
 
-	@UiField TextBox capacitance;
-	@UiField(provided=true) UnitsListBox capacitanceUnit;
-	@UiField TextBox frequency;
-	@UiField(provided=true) UnitsListBox frequencyUnit;
+	@UiField(provided=true)UnitsListBox type;
+	@UiField TextBox input;
+	@UiField TextBox output;
 	@UiField Button button;
 	@UiField Label result;
 
-	public Capacitor() {
-		this.capacitanceUnit = new UnitsListBox(Type.CAPACITANCE);
-		this.frequencyUnit = new UnitsListBox(Type.FREQUENCY);
+	public Gain() {
+		type = new UnitsListBox(Type.GAIN);
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
 	@UiHandler("button")
 	void onSubmitClick(ClickEvent e) {
-		Services.getAssistantService().getCapacitorResistance(
-				capacitance.getText(),
-				capacitanceUnit.getIntValue(),
-				frequency.getText(),
-				frequencyUnit.getIntValue(),
+		Services.getAssistantService().getGain(
+				type.getValue(),
+				input.getValue(),
+				output.getValue(),
 				new RPCCallback<String>() {
-
 					@Override
 					public void onSuccess(String result) {
-						Capacitor.this.result.setText("Result: " + result + " \u2126");
+						Gain.this.result.setText("Result: " + result);
 					}
 				});
 	}
+
 }

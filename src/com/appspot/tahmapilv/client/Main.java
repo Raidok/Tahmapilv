@@ -22,12 +22,10 @@ public class Main extends Composite {
 	}
 
 	public FlowPanel getContent() {
-		GWT.log("content get " + content);
 		return content;
 	}
 
 	public void setContent(Widget content) {
-		GWT.log("content set to " + content);
 		this.content.clear();
 		this.content.add(content);
 	}

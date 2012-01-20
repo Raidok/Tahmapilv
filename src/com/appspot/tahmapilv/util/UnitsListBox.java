@@ -13,7 +13,8 @@ public class UnitsListBox extends ListBox {
 		CAPACITANCE("F"),
 		INDUCTANCE("H"),
 		RESISTANCE("\u2126"), //Ohm sign
-		FREQUENCY("");
+		FREQUENCY(""),
+		GAIN("");
 		private String unit;
 		Type(String unit) {
 			this.unit = unit;
@@ -59,6 +60,13 @@ public class UnitsListBox extends ListBox {
 			addItem("krad", "2000");
 			break;
 
+		case GAIN:
+			addItem("Current", "CUR");
+			addItem("Power", "POW");
+			addItem("Voltage", "VOL");
+			setSelected("VOL");
+			break;
+
 		default:
 			addItem(Prefix.NONE);
 			break;
@@ -69,17 +77,33 @@ public class UnitsListBox extends ListBox {
 		addItem(prefix.getSign() + type.getUnit(), String.valueOf(prefix.getFactor()));
 	}
 
-	public int getValue() {
-		return Integer.valueOf(getValue(getSelectedIndex()));
+	public int getIntValue() {
+		try {
+			return Integer.valueOf(getValue(getSelectedIndex()));
+		} catch (NumberFormatException e) {
+			GWT.log("NaN");
+			return 0; //FIXME global error panel!
+		}
+	}
+
+	public String getValue() {
+		return getValue(getSelectedIndex());
 	}
 
 	public void setSelected(Prefix prefix) {
 		int count = getItemCount();
-		GWT.log("setSelected: count="+count+" setTo="+prefix);
 		for (int i = 0; i < count; i++) {
 			if (Integer.valueOf(getValue(i)) == prefix.getFactor()) {
 				setSelectedIndex(i);
-				GWT.log(" found it! i="+i);
+			}
+		}
+	}
+
+	public void setSelected(String value) {
+		int count = getItemCount();
+		for (int i = 0; i < count; i++) {
+			if (getValue(i).equals(value)) {
+				setSelectedIndex(i);
 			}
 		}
 	}

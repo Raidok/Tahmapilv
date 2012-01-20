@@ -11,6 +11,12 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface AssistantService extends RemoteService {
 
 	/* Capacitor AC response */
-	String getCapacitorResistance(String capacitance, int factor, String frequency, int multiplier) throws InputException;
-	String getInductorResistance(String inductance, int factor, String frequency, int multiplier) throws InputException;
+	String getCapacitorResistance(String capacitance, int factor, String frequency, int multiplier)
+			throws InputException;
+	String getInductorResistance(String inductance, int factor, String frequency, int multiplier)
+			throws InputException;
+
+	/* Gain */
+	String getGain(String type, String input, String output)
+			throws InputException;
 }

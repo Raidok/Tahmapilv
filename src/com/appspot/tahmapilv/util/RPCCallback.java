@@ -19,7 +19,7 @@ public abstract class RPCCallback<T> implements AsyncCallback<T>{
 
 	@Override
 	public void onFailure(Throwable caught) {
-		GWT.log(caught.getMessage());
+		GWT.log(caught.getMessage()); // FIXME global error panel!
 	}
 
 	@Override
