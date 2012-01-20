@@ -1,0 +1,23 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:my="urn:import:com.appspot.tahmapilv.util">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<g:InlineLabel>Type:</g:InlineLabel>
+		<!--my:UnitsListBox ui:field="type"></my:UnitsListBox-->
+		<br/>
+		<g:InlineLabel ui:field="lab1"></g:InlineLabel>
+		<g:TextBox ui:field="input1"></g:TextBox>
+		<my:UnitsListBox ui:field="factor1"></my:UnitsListBox>
+		<br/>
+		<g:InlineLabel ui:field="lab2"></g:InlineLabel>
+		<g:TextBox ui:field="input2"></g:TextBox>
+		<my:UnitsListBox ui:field="factor2"></my:UnitsListBox>
+		<br/>
+		<g:Button ui:field="button" text="Submit"/>
+		<g:Label ui:field="result"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 

@@ -4,6 +4,7 @@ import com.appspot.tahmapilv.client.content.Capacitor;
 import com.appspot.tahmapilv.client.content.Gain;
 import com.appspot.tahmapilv.client.content.Inductor;
 import com.appspot.tahmapilv.client.content.NotFound;
+import com.appspot.tahmapilv.client.content.TimeConstant;
 import com.appspot.tahmapilv.client.content.Welcome;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -37,6 +38,8 @@ public class MainEntry implements EntryPoint {
 				main.setContent(new Inductor());
 			} else if ("Gain".equals(token)) {
 				main.setContent(new Gain());
+			} else if ("TimeConstant".equals(token)) {
+				main.setContent(new TimeConstant());
 			} else {
 				main.setContent(new NotFound());
 			}

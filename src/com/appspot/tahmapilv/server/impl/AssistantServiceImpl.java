@@ -3,6 +3,7 @@ package com.appspot.tahmapilv.server.impl;
 import isc.components.Capacitor;
 import isc.components.Inductor;
 import isc.util.Admittance;
+import isc.util.TimeConstant;
 
 import com.appspot.tahmapilv.server.Utils;
 import com.appspot.tahmapilv.service.AssistantService;
@@ -53,6 +54,27 @@ public class AssistantServiceImpl extends RemoteServiceServlet implements Assist
 			buf.append(Utils.roundToThree(Admittance.getVoltageGain(ratio)));
 			buf.append(" dB");
 		}
+		return buf.toString();
+	}
+
+	@Override
+	public String getTimeConstantAndCutOffFreq(String type, String input1,
+			int factor1, String input2, int factor2) throws InputException {
+		double in1 = Utils.stringToDouble(input1) * Math.pow(10, factor1);
+		double in2 = Utils.stringToDouble(input2) * Math.pow(10, factor2);
+		double tc = 0;
+		StringBuffer buf = new StringBuffer();
+		if ("RC".equals(type)) {
+			buf.append("RC circuit time constant:");
+			tc = TimeConstant.getTimeConstantRC(in1, in2);
+		} if ("LR".equals(type)) {
+			buf.append("LR circuit time constant:");
+			tc = TimeConstant.getTimeConstantLR(in1, in2);
+		}
+		buf.append(Utils.roundToThree(tc));
+		buf.append(" s cutoff frequency:");
+		buf.append(Utils.roundToThree(TimeConstant.getCutoffFrequency(tc)));
+		buf.append(" Hz");
 		return buf.toString();
 	}
 }

@@ -13,4 +13,6 @@ public interface AssistantServiceAsync {
 			AsyncCallback<String> callBack);
 	void getGain(String type, String input, String output,
 			AsyncCallback<String> callBack);
+	void getTimeConstantAndCutOffFreq(String type, String input1, int factor1, String input2, int factor2,
+			AsyncCallback<String> callBack);
 }

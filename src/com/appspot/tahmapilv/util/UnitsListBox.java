@@ -14,7 +14,8 @@ public class UnitsListBox extends ListBox {
 		INDUCTANCE("H"),
 		RESISTANCE("\u2126"), //Ohm sign
 		FREQUENCY(""),
-		GAIN("");
+		GAIN(""),
+		SCH_TYPE("");
 		private String unit;
 		Type(String unit) {
 			this.unit = unit;
@@ -65,6 +66,12 @@ public class UnitsListBox extends ListBox {
 			addItem("Power", "POW");
 			addItem("Voltage", "VOL");
 			setSelected("VOL");
+			break;
+
+		case SCH_TYPE:
+			addItem("", "");
+			addItem("RC", "RC");
+			addItem("LR", "LR");
 			break;
 
 		default:

@@ -22,7 +22,7 @@ public class Gain extends Composite {
 	interface GainUiBinder extends UiBinder<Widget, Gain> {
 	}
 
-	@UiField(provided=true)UnitsListBox type;
+	@UiField(provided=true) UnitsListBox type;
 	@UiField TextBox input;
 	@UiField TextBox output;
 	@UiField Button button;

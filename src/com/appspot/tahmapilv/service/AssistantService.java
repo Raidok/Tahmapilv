@@ -19,4 +19,8 @@ public interface AssistantService extends RemoteService {
 	/* Gain */
 	String getGain(String type, String input, String output)
 			throws InputException;
+
+	/* Time Constant */
+	String getTimeConstantAndCutOffFreq(String type, String input1, int factor1, String input2, int factor2)
+			throws InputException;
 }

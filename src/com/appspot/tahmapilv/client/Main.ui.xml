@@ -38,7 +38,8 @@
 			<a href="#">Front Page</a><br/>
 			<a href="#Capacitor">Capacitor AC response</a><br/>
 			<a href="#Inductor">Inductor AC response</a><br/>
-			<a href="#Gain">Gain calculator</a>
+			<a href="#Gain">Gain calculator</a><br/>
+			<a href="#TimeConstant">Time Constant</a>
 		</div>
 		<g:FlowPanel ui:field="content"></g:FlowPanel>
 	</g:HTMLPanel>
