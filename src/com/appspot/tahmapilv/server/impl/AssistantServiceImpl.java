@@ -71,8 +71,8 @@ public class AssistantServiceImpl extends RemoteServiceServlet implements Assist
 			buf.append("LR circuit time constant:");
 			tc = TimeConstant.getTimeConstantLR(in1, in2);
 		}
-		buf.append(Utils.roundToThree(tc));
-		buf.append(" s cutoff frequency:");
+		buf.append(Utils.roundToThree(tc * 1E6));
+		buf.append(" \u00B5s cutoff frequency:");
 		buf.append(Utils.roundToThree(TimeConstant.getCutoffFrequency(tc)));
 		buf.append(" Hz");
 		return buf.toString();

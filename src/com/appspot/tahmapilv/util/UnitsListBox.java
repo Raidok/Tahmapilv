@@ -27,9 +27,16 @@ public class UnitsListBox extends ListBox {
 
 	private Type type;
 
+	public UnitsListBox() {
+	}
+
 	public UnitsListBox(Type type) {
-		super();
+		fill(type);
+	}
+
+	public void fill(Type type) {
 		this.type = type;
+		clear();
 		switch (type) {
 		case CAPACITANCE:
 			addItem(Prefix.NONE);
